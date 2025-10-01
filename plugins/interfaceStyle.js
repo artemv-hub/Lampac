@@ -1,6 +1,41 @@
 (function () {
   "use strict";
-
+  
+  const style = document.createElement('style');
+  style.textContent = `
+    .card__view { position: relative !important; }
+    .card__quality { left: 0.3em; bottom: 0.3em; border-radius: 1em; padding: 0.2em 0.5em; background: rgba(0, 0, 0, 0.8); width: max-content; max-width: calc(100% - 1em); text-transform: none; }
+    .card__quality div { font-weight: bold; font-size: 1.2em; font-style: normal; color: #fff; }
+    .card__vote { font-weight: bold; font-size: 1em; right: 0.2em; bottom: 0.2em; background: rgba(0, 0, 0, 0.8); }
+    .card__icons { top: 1.6em; }
+    .card__marker { top: 0.1em; bottom: unset; left: 50%; transform: translate(-50%); }
+    .card__marker > span { font-size: 0.8em; max-width: 16em; }
+    .card__type { top: 2.4em; border-radius: 0.4em; padding: 0.2em 0.4em; }
+  
+    .full-start-new__buttons .full-start__button:not(.focus) span { display: unset; }
+    .time-line { background-color: rgba(255, 255, 255, 0.1); }
+    .time-line > div,
+    .navigation-tabs__button.focus,
+    .player-panel__position,
+    .player-panel__position > div:after { background-color: #65eaa7; color: #fff; }
+  
+    .radio-item.focus,
+    .lang__selector-item.focus,
+    .simple-keyboard .hg-button.focus,
+    .modal__button.focus,
+    .search-history-key.focus,
+    .simple-keyboard-mic.focus,
+    .torrent-serial__progress,
+    .full-review-add.focus,
+    .full-review.focus,
+    .tag-count.focus,
+    .settings-folder.focus,
+    .settings-param.focus,
+    .selectbox-item.focus,
+    .selectbox-item.hover { background: #65eaa7; color: #000; }
+  `;
+  document.head.appendChild(style);
+  
   function full_start() {
     Lampa.Template.add('full_start_new',
       "<div class=\"full-start-new\">\n" +
@@ -65,7 +100,7 @@
       "</div>"
     );
   }
-
+  
   function fixLabelsTV(cards) {
     for (let i = 0; i < cards.length; i++) {
       const card = cards[i];
@@ -75,11 +110,11 @@
       }
     }
   }
-
+  
   function startPlugin() {
     full_start();
     fixLabelsTV(document.querySelectorAll('.card--tv'));
-
+    
     const observer = new MutationObserver((mutations) => {
       mutations.forEach(mutation => {
         mutation.addedNodes.forEach(node => {
@@ -91,10 +126,10 @@
         });
       });
     });
-
+    
     observer.observe(document.body, { childList: true, subtree: true });
   }
-
+  
   if (window.appready) { startPlugin(); }
   else {
     Lampa.Listener.follow("app", function (e) {

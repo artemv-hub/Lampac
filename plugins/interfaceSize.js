@@ -1,6 +1,6 @@
 (function () {
   "use strict";
-
+  
   function fixSize() {
     Lampa.SettingsApi.addParam({
       component: 'interface',
@@ -22,7 +22,7 @@
         Lampa.Controller.toggle(name);
       }
     });
-
+    
     Lampa.Settings.listener.follow('open', function (e) {
       if (e.name == 'interface') {
         var item = e.body.find('[data-name="interface_fixsize"]');
@@ -30,9 +30,9 @@
         item.insertAfter(e.body.find('[data-name="interface_size"]'));
       }
     });
-
+    
     var layer_update = Lampa.Layer.update;
-
+    
     Lampa.Layer.update = function (where) {
       var font_size = parseInt(Lampa.Storage.field('interface_fixsize')) || 12;
       if (Lampa.Platform.is('browser')) { font_size = 12; }
@@ -40,7 +40,7 @@
       $('body').css({ fontSize: font_size + 'px' });
       layer_update(where);
     };
-
+    
     var timer;
     $(window).on('resize', function () {
       clearTimeout(timer);
@@ -48,14 +48,14 @@
         Lampa.Layer.update();
       }, 150);
     });
-
+    
     Lampa.Layer.update();
   }
-
+  
   function startPlugin() {
     fixSize();
   }
-
+  
   if (window.appready) { startPlugin(); }
   else {
     Lampa.Listener.follow("app", function (e) {

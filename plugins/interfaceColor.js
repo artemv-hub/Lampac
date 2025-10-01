@@ -1,6 +1,6 @@
 (function () {
   "use strict";
-
+  
   function colorRating() {
     const colorR = rating => {
       if (rating >= 9) return "#3498db";
@@ -10,16 +10,16 @@
       if (rating >= 0) return "#e74c3c";
       return null;
     };
-
+    
     const elements = document.querySelectorAll(".card__vote, .full-start__rate > div, .info__rate > span");
-
+    
     elements.forEach(el => {
       const rating = parseFloat(el.textContent.trim());
       const color = colorR(rating);
       if (color) el.style.color = color;
     });
   }
-
+  
   function colorQuality() {
     const colorQ = [
       { qualities: ["2160p"], color: "#3498db" },
@@ -27,9 +27,9 @@
       { qualities: ["1080i", "720p", "720i", "bdrip", "hdrip", "dvdrip", "web-dl", "webrip", "iptv", "hdtv", "tv"], color: "#f1c40f" },
       { qualities: ["480p", "camrip", "vhsrip", "tc", "ts"], color: "#e67e22" },
     ];
-
+    
     const elements = document.querySelectorAll(".card__quality div, .full-start__status.lqe-quality");
-
+    
     elements.forEach(el => {
       const quality = el.textContent.trim().toLowerCase();
       const found = colorQ.find(qc => qc.qualities.some(q => quality.includes(q)));
@@ -38,11 +38,11 @@
       }
     });
   }
-
+  
   function startPlugin() {
     colorRating();
     colorQuality();
-
+    
     const observer = new MutationObserver((mutations) => {
       mutations.forEach(mutation => {
         mutation.addedNodes.forEach(node => {
@@ -53,14 +53,14 @@
         });
       });
     });
-
+    
     observer.observe(document.body, { childList: true, subtree: true });
-
+    
     document.addEventListener("DOMContentLoaded", () => {
       setTimeout(() => { colorRating(); colorQuality(); }, 200);
     });
   }
-
+  
   if (window.appready) { startPlugin(); }
   else {
     Lampa.Listener.follow("app", function (e) {
