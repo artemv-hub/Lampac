@@ -59,8 +59,7 @@
       "        <div class=\"full-start__status\"></div>\n" +
       "      </div>\n" +
       "      <div class=\"full-start-new__details\"></div>\n" +
-      "      <div class=\"full-start-new__reactions\">\n" +
-      "        <div>#{reactions_none}</div>\n" +
+      "      <div class=\"full-start-new__reactions hide\"><div>#{reactions_none}</div>\n" +
       "      </div>\n" +
       "\n" +
       "      <div class=\"full-start-new__buttons\">\n" +

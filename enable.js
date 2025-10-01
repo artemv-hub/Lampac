@@ -2,7 +2,7 @@
   "use strict";
   
   var manifest = {
-    version: "1.0.1",
+    version: "1.0.2",
     name: "artemv_plugins",
     description: "ArtemV Plugins",
   };
