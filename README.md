@@ -1,1 +1,2 @@
-# Lampac
+# AI Документация
+[![DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/immisterio/Lampac)
