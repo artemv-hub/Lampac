@@ -2,16 +2,26 @@
   "use strict";
   
   var manifest = {
-    version: "1.0.2",
+    version: "1.0.3",
     name: "artemv_plugins",
     description: "ArtemV Plugins",
   };
   Lampa.Manifest.plugins = manifest;
   
-  Lampa.Utils.putScriptAsync(['https://artemv-hub.github.io/Lampac/plugins/bookmarks.js'], function () {});
-  Lampa.Utils.putScriptAsync(['https://artemv-hub.github.io/Lampac/plugins/interfaceColor.js'], function () {});
-  Lampa.Utils.putScriptAsync(['https://artemv-hub.github.io/Lampac/plugins/interfaceSize.js'], function () {});
-  Lampa.Utils.putScriptAsync(['https://artemv-hub.github.io/Lampac/plugins/interfaceStyle.js'], function () {});
-  Lampa.Utils.putScriptAsync(['https://artemv-hub.github.io/Lampac/plugins/quality.js'], function () {});
+  if (Lampa.Storage.get('lampac_unic_id', '') === 'ArtemV') {
+    Lampa.Utils.putScriptAsync(['https://artemv-hub.github.io/Lampac/plugins/bookmarks.js'], function () {});
+    Lampa.Utils.putScriptAsync(['https://artemv-hub.github.io/Lampac/plugins/interfaceColor.js'], function () {});
+    Lampa.Utils.putScriptAsync(['https://artemv-hub.github.io/Lampac/plugins/interfaceSize.js'], function () {});
+    Lampa.Utils.putScriptAsync(['https://artemv-hub.github.io/Lampac/plugins/interfaceStyle.js'], function () {});
+    Lampa.Utils.putScriptAsync(['https://artemv-hub.github.io/Lampac/plugins/quality.js'], function () {});
+  }
+  
+  if (Lampa.Storage.get('lampac_unic_id', '') === 'KristinaV') {
+    //  Lampa.Utils.putScriptAsync(['https://artemv-hub.github.io/Lampac/plugins/bookmarks.js'], function () {});
+    Lampa.Utils.putScriptAsync(['https://artemv-hub.github.io/Lampac/plugins/interfaceColor.js'], function () {});
+    Lampa.Utils.putScriptAsync(['https://artemv-hub.github.io/Lampac/plugins/interfaceSize.js'], function () {});
+    Lampa.Utils.putScriptAsync(['https://artemv-hub.github.io/Lampac/plugins/interfaceStyle.js'], function () {});
+    Lampa.Utils.putScriptAsync(['https://artemv-hub.github.io/Lampac/plugins/quality.js'], function () {});
+  }
   
 })();
