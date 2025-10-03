@@ -117,8 +117,8 @@
     const observer = new MutationObserver((mutations) => {
       mutations.forEach(mutation => {
         mutation.addedNodes.forEach(node => {
-          if (node.nodeType === 1 && node.matches('.card--tv')) {
-            fixLabelsTV([node]);
+          if (node.nodeType === 1) {
+            if (node.matches('.card--tv')) fixLabelsTV([node]);
             const childCards = node.querySelectorAll('.card--tv');
             if (childCards.length > 0) fixLabelsTV(childCards);
           }
