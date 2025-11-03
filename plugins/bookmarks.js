@@ -81,38 +81,42 @@
   var plugin = new CustomCategoryPlugin();  
     
   // Добавить UI для создания категории  
-  function addCreateCategoryButton() {  
-    Lampa.SettingsApi.addComponent({  
-      component: 'custom_categories',  
-      name: 'Пользовательские категории',  
-      icon: '<svg>...</svg>'  
-    });  
-      
-    Lampa.SettingsApi.addParam({  
-      component: 'custom_categories',  
-      param: {  
-        name: 'create_category',  
-        type: 'button',  
-        default: true  
-      },  
-      onRender: function(item) {  
-        item.on('hover:enter', function() {  
-          Lampa.Input.edit({  
-            title: 'Название категории',  
-            value: '',  
-            free: true,  
-            nosave: true  
-          }, function(value) {  
-            if (value) {  
-              plugin.setCategory(value, [], function() {  
-                Lampa.Noty.show('Категория "' + value + '" создана');  
-              });  
-            }  
-          });  
+function addCreateCategoryButton() {  
+  Lampa.SettingsApi.addComponent({  
+    component: 'custom_categories',  
+    name: 'Пользовательские категории',  
+    icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4v16m8-8H4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>'  
+  });  
+    
+  Lampa.SettingsApi.addParam({  
+    component: 'custom_categories',  
+    param: {  
+      name: 'create_category',  
+      type: 'button',  
+      default: true  
+    },  
+    field: {  
+      name: 'Создать категорию',  
+      description: 'Добавить новую пользовательскую категорию'  
+    },  
+    onRender: function(item) {  
+      item.on('hover:enter', function() {  
+        Lampa.Input.edit({  
+          title: 'Название категории',  
+          value: '',  
+          free: true,  
+          nosave: true  
+        }, function(value) {  
+          if (value) {  
+            plugin.setCategory(value, [], function() {  
+              Lampa.Noty.show('Категория "' + value + '" создана');  
+            });  
+          }  
         });  
-      }  
-    });  
-  }  
+      });  
+    }  
+  });  
+}
     
   // Расширить контекстное меню карточки  
   function extendCardMenu(card) {  
