@@ -9,7 +9,7 @@
   Lampa.Manifest.plugins = manifest;
   
   if (Lampa.Storage.get('lampac_unic_id', '') === 'ArtemV') {
-    Lampa.Utils.putScriptAsync(['https://artemv-hub.github.io/Lampac/plugins/bookmarks.js'], function () {});
+    //Lampa.Utils.putScriptAsync(['https://artemv-hub.github.io/Lampac/plugins/bookmarks.js'], function () {});
     Lampa.Utils.putScriptAsync(['https://artemv-hub.github.io/Lampac/plugins/interfaceColor.js'], function () {});
     //Lampa.Utils.putScriptAsync(['https://artemv-hub.github.io/Lampac/plugins/interfaceMobile.js'], function () {});
     Lampa.Utils.putScriptAsync(['https://artemv-hub.github.io/Lampac/plugins/interfaceSize.js'], function () {});
